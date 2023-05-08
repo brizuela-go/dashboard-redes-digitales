@@ -80,7 +80,7 @@ const Auth: React.FC<Props> = ({ title, href, description }) => {
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <Image
             className="mx-auto heart filter saturate-150 "
-            src="/4.png"
+            src="/7.png"
             alt="Heart"
             width={200}
             height={200}
