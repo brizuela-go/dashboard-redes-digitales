@@ -79,7 +79,7 @@ const Auth: React.FC<Props> = ({ title, href, description }) => {
       <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 lg:mt-6 lg:mb-0 my-14    ">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <Image
-            className="mx-auto heart"
+            className="mx-auto heart filter hue-rotate-15"
             src="/4.png"
             alt="Heart"
             width={200}
@@ -103,7 +103,7 @@ const Auth: React.FC<Props> = ({ title, href, description }) => {
                   required
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Correo"
-                  className="input input-bordered input-secondary w-full "
+                  className="input lg:input-bordered input-secondary w-full "
                 />
               </div>
             </div>
@@ -120,7 +120,7 @@ const Auth: React.FC<Props> = ({ title, href, description }) => {
                   required
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Contraseña"
-                  className="input input-bordered input-secondary w-full "
+                  className="input lg:input-bordered input-secondary w-full "
                 />
               </div>
             </div>
