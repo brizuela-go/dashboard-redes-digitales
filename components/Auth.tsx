@@ -80,7 +80,7 @@ const Auth: React.FC<Props> = ({ title, href, description }) => {
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <Image
             className="mx-auto  heart"
-            src="/4.png"
+            src="/3.png"
             alt="Heart"
             width={200}
             height={200}
@@ -145,7 +145,7 @@ const Auth: React.FC<Props> = ({ title, href, description }) => {
           </form>
         </div>
         <Link
-          className="fixed top-5 right-5 btn btn-sm btn-secondary  "
+          className="fixed top-6 lg:right-6  btn btn-sm btn-secondary  "
           href={href}
         >
           {description}

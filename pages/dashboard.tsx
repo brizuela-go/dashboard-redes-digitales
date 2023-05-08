@@ -199,7 +199,6 @@ const Dashboard: NextPage<Props> = () => {
 };
 
 export default withAuthUser<any>({
-  authPageURL: "/denied",
   whenUnauthedBeforeInit: AuthAction.RETURN_NULL,
   whenUnauthedAfterInit: AuthAction.REDIRECT_TO_LOGIN,
 })(Dashboard);
