@@ -24,7 +24,7 @@ const Loader = (props: Props) => {
 
     count === 0 && router.push("/");
     return () => clearInterval(interval);
-  }, [count]);
+  }, [count, router]);
 
   useEffect(() => {
     const random = Math.floor(Math.random() * gifs.length);
