@@ -103,7 +103,7 @@ const Auth: React.FC<Props> = ({ title, href, description }) => {
                   required
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Correo"
-                  className="input input-bordered input-secondary focus:outline-none lg:focus:outline w-full "
+                  className="input input-bordered input-secondary focus:outline-none lg:focus:outline w-full focus:border-pink-600 focus:border-2 transition duration-200 ease-in-out "
                 />
               </div>
             </div>
@@ -120,7 +120,7 @@ const Auth: React.FC<Props> = ({ title, href, description }) => {
                   required
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Contraseña"
-                  className="input input-bordered input-secondary focus:outline-none lg:focus:outline w-full "
+                  className="input input-bordered input-secondary focus:outline-none focus:border-pink-600 focus:border-2 transition duration-200 ease-in-out w-full "
                 />
               </div>
             </div>
