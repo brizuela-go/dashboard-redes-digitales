@@ -9,6 +9,8 @@
 
 ## Descripción
 
+Dashboard de IoT para la materia de Redes Digitales
+
 ## Requerimientos
 
 - [node.js](https://nodejs.org/es/)
