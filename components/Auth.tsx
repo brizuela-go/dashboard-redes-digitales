@@ -79,8 +79,8 @@ const Auth: React.FC<Props> = ({ title, href, description }) => {
       <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 lg:mt-6 lg:mb-0 my-14    ">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <Image
-            className="mx-auto  heart"
-            src="/3.png"
+            className="mx-auto heart bg-transparent filter-none"
+            src="/4.png"
             alt="Heart"
             width={200}
             height={200}

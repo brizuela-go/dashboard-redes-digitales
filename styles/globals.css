@@ -9,7 +9,7 @@ h3 {
 /* background color */
 html,
 body {
-  @apply bg-gradient-to-r from-rose-50 via-pink-100  to-rose-200;
+  @apply bg-pink-100 !important;
 }
 
 @tailwind base;
