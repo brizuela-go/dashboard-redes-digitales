@@ -27,7 +27,6 @@ const Register: NextPage = () => {
 };
 
 export default withAuthUser<any>({
-  whenUnauthedBeforeInit: AuthAction.RETURN_NULL,
   whenAuthed: AuthAction.REDIRECT_TO_APP,
   LoaderComponent: () => <Loader />,
   whenAuthedBeforeRedirect: AuthAction.SHOW_LOADER,
