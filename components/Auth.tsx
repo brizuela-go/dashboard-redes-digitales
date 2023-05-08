@@ -103,7 +103,7 @@ const Auth: React.FC<Props> = ({ title, href, description }) => {
                   required
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Correo"
-                  className="input lg:input-bordered input-secondary w-full "
+                  className="input border-none  input-secondary w-full "
                 />
               </div>
             </div>
@@ -120,7 +120,7 @@ const Auth: React.FC<Props> = ({ title, href, description }) => {
                   required
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Contraseña"
-                  className="input lg:input-bordered input-secondary w-full "
+                  className="input border-none input-secondary w-full "
                 />
               </div>
             </div>
