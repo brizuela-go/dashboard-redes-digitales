@@ -3,13 +3,9 @@ import { init } from "next-firebase-auth";
 
 let privateKey;
 
-try {
-  const firebasePrivateKey = process.env.FIREBASE_PRIVATE_KEY;
-  if (firebasePrivateKey) {
-    privateKey = JSON.parse(firebasePrivateKey);
-  }
-} catch (error) {
-  console.error("Error parsing Firebase private key:", error);
+const firebasePrivateKey = process.env.FIREBASE_PRIVATE_KEY;
+if (firebasePrivateKey) {
+  privateKey = JSON.parse(firebasePrivateKey);
 }
 
 const { private_key } = privateKey || {};
