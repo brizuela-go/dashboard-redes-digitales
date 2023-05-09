@@ -191,7 +191,7 @@ const Dashboard: NextPage<Props> = () => {
                   </div>
                   <div className="stat-title">{dataValue.title}</div>
                   <div className={`stat-value ${dataValue.class}`}>
-                    {dataValue.value.toFixed(2)}
+                    {dataValue?.value?.toFixed(2)}
                   </div>
                   <div className="stat-desc">{dataValue.metric}</div>
                 </div>
