@@ -15,6 +15,7 @@ import { AuthAction, useAuthUser, withAuthUser } from "next-firebase-auth";
 import { FaTemperatureHigh, FaTemperatureLow } from "react-icons/fa";
 import Head from "next/head";
 import Loader from "@/components/Loader";
+import { useRouter } from "next/router";
 
 const refs = [
   "test/Calidad_aire",
@@ -95,11 +96,31 @@ const Dashboard: NextPage<Props> = () => {
       class: "text-primary",
     },
   ];
+  const router = useRouter();
 
-  // when page is visited, play audio "rosa_pastel.mp3"
   useEffect(() => {
     const audio = new Audio("/rosa_pastel.mp3");
-    audio.play();
+
+    // Load and play audio when page is visited or reloaded
+    const playAudio = () => {
+      audio.load();
+      audio.loop = true;
+      audio.play();
+    };
+
+    playAudio();
+
+    // Pause audio when leaving the page
+    const pauseAudio = () => {
+      audio.pause();
+    };
+
+    router.events.on("routeChangeStart", pauseAudio);
+
+    return () => {
+      pauseAudio();
+      router.events.off("routeChangeStart", pauseAudio);
+    };
   }, []);
 
   const AuthUser = useAuthUser();
@@ -192,7 +213,7 @@ const Dashboard: NextPage<Props> = () => {
                   </div>
                   <div className="stat-title">{dataValue.title}</div>
                   <div className={`stat-value ${dataValue.class}`}>
-                    {dataValue?.value?.toFixed(2)}
+                    {dataValue?.value?.toFixed(2) || 0}
                   </div>
                   <div className="stat-desc">{dataValue.metric}</div>
                 </div>
