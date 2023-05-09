@@ -170,7 +170,7 @@ const Dashboard: NextPage<Props> = () => {
                 height={120}
                 priority
                 quality={100}
-                className="hover:scale-150 transition duration-300 ease-in-out transform w-auto h-auto"
+                className="hover:scale-150 transition duration-300 ease-in-out transform"
               />
             </div>
             <h3 className="lg:text-3xl text-xl font-bold text-center mb-6  tracking-tighter  bg-clip-text text-transparent from-pink-400 to-rose-500 bg-gradient-to-r  ">
