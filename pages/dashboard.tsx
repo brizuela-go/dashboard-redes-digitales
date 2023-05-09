@@ -114,7 +114,7 @@ const Dashboard: NextPage<Props> = () => {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {loaded && (
+      {loaded ? (
         <>
           <header>
             <div className="navbar bg-transparent ">
@@ -165,12 +165,12 @@ const Dashboard: NextPage<Props> = () => {
               </h1>
               <Image
                 src="/kirby.webp"
-                alt="Picture of the author"
-                width={130}
-                height={130}
+                alt="Kirby"
+                width={120}
+                height={120}
                 priority
                 quality={100}
-                className="hover:scale-150 transition duration-300 ease-in-out transform"
+                className="hover:scale-150 transition duration-300 ease-in-out transform w-auto h-auto"
               />
             </div>
             <h3 className="lg:text-3xl text-xl font-bold text-center mb-6  tracking-tighter  bg-clip-text text-transparent from-pink-400 to-rose-500 bg-gradient-to-r  ">
@@ -200,6 +200,8 @@ const Dashboard: NextPage<Props> = () => {
             </div>
           </section>
         </>
+      ) : (
+        <Loader />
       )}
     </>
   );
