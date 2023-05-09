@@ -19,7 +19,7 @@ const Home: NextPage = () => {
         <Auth
           title="Inicia Sesión"
           href="/register"
-          description="¿Aún no estás registradx? Registrate aquí"
+          description="¿Aún no estás registradx? Regístrate aquí"
         />
       </section>
     </>

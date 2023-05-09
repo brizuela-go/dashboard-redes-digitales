@@ -95,6 +95,12 @@ const Dashboard: NextPage<Props> = () => {
     },
   ];
 
+  // when page is visited, play audio "rosa_pastel.mp3"
+  useEffect(() => {
+    const audio = new Audio("/rosa_pastel.mp3");
+    audio.play();
+  }, []);
+
   const AuthUser = useAuthUser();
 
   return (
