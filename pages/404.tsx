@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import Head from "next/head";
+import { NextPage } from "next";
 
 type Props = {};
 
@@ -13,7 +14,7 @@ const gifs = [
   "/denied5.gif",
 ];
 
-const fourOFour = (props: Props) => {
+const FourOFour: NextPage<Props> = () => {
   const router = useRouter();
   const [count, setCount] = useState(5);
   const [randomGif, setRandomGif] = useState("");
@@ -65,4 +66,4 @@ const fourOFour = (props: Props) => {
   );
 };
 
-export default fourOFour;
+export default FourOFour;
