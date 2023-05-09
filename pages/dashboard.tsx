@@ -6,10 +6,17 @@ type Props = {};
 import Image from "next/image";
 import { db } from "@/firebase/client";
 import { ref, onValue } from "firebase/database";
+
 import { NextPage } from "next";
 
 const inter = Inter({ subsets: ["latin"] });
-import { BsFillCheckCircleFill } from "react-icons/bs";
+
+import {
+  BsDroplet,
+  BsDropletFill,
+  BsDropletHalf,
+  BsFillCheckCircleFill,
+} from "react-icons/bs";
 import { RiErrorWarningFill, RiSkullFill } from "react-icons/ri";
 import { AuthAction, useAuthUser, withAuthUser } from "next-firebase-auth";
 import { FaTemperatureHigh, FaTemperatureLow } from "react-icons/fa";
@@ -17,34 +24,48 @@ import Head from "next/head";
 import Loader from "@/components/Loader";
 import { useRouter } from "next/router";
 
-const refs = [
-  "test/Calidad_aire",
-  "test/Humedad",
-  "test/Indice_calor",
-  "test/Temperatura",
-];
+const refsFirstTest = ["test/Humedad", "test/Indice_calor", "test/Temperatura"];
+const refsSecondTest = ["test2/Calidad_aire", "test2/co2", "test2/tvoc"];
 
 const Dashboard: NextPage<Props> = () => {
   const [loaded, setLoaded] = useState(false);
-  const [co2, setCo2] = useState(0);
+
   const [humedad, setHumedad] = useState(0);
   const [indiceCalor, setIndiceCalor] = useState(0);
   const [temperatura, setTemperatura] = useState(0);
 
+  const [calidadAire, setCalidadAire] = useState(0);
+  const [co2, setCo2] = useState(0);
+  const [tvoc, setTvoc] = useState(0);
+
   useEffect(() => {
     // Fetch data for each reference and update the corresponding state variable
-    refs.forEach((valref) => {
+    refsFirstTest.forEach((valref) => {
       const reference = ref(db, valref);
       onValue(reference, (snapshot) => {
         const data = snapshot.val();
-        if (valref === "test/Calidad_aire") {
-          setCo2(data);
-        } else if (valref === "test/Humedad") {
+
+        if (valref === "test/Humedad") {
           setHumedad(data);
         } else if (valref === "test/Indice_calor") {
           setIndiceCalor(data);
         } else if (valref === "test/Temperatura") {
           setTemperatura(data);
+        }
+      });
+    });
+
+    refsSecondTest.forEach((valref) => {
+      const reference = ref(db, valref);
+      onValue(reference, (snapshot) => {
+        const data = snapshot.val();
+
+        if (valref === "test2/Calidad_aire") {
+          setCalidadAire(data);
+        } else if (valref === "test2/co2") {
+          setCo2(data);
+        } else if (valref === "test2/tvoc") {
+          setTvoc(data);
         }
 
         setLoaded(true);
@@ -70,15 +91,22 @@ const Dashboard: NextPage<Props> = () => {
     {
       title: "Humedad",
       value: humedad,
-      metric: "%",
-      figure: "💧",
+      metric: "habs",
+      figure:
+        humedad < 20 ? (
+          <BsDroplet className="h-10 w-10 text-sky-300" />
+        ) : humedad < 70 ? (
+          <BsDropletHalf className="h-10 w-10 text-sky-500 " />
+        ) : (
+          <BsDropletFill className="h-10 w-10 text-sky-800" />
+        ),
       class: "text-secondary",
     },
     {
-      title: "Indice de Calor",
+      title: "Índice de Calor",
       value: indiceCalor,
-      metric: "°C",
-      figure: "🦄",
+      metric: "HI (°C)",
+      figure: <span className="text-4xl">🥵</span>,
       class: "text-black",
     },
     {
@@ -89,11 +117,25 @@ const Dashboard: NextPage<Props> = () => {
         temperatura < 10 ? (
           <FaTemperatureLow className=" h-10 w-10 text-indigo-500" />
         ) : temperatura < 30 ? (
-          <FaTemperatureHigh className=" h-10 w-10 text-black" />
+          <FaTemperatureHigh className=" h-10 w-10 text-success" />
         ) : (
           <FaTemperatureHigh className=" h-10 w-10 text-error" />
         ),
       class: "text-primary",
+    },
+    {
+      title: "Calidad del Aire",
+      value: calidadAire,
+      metric: "ICA",
+      figure: <span className="text-4xl">🌫️</span>,
+      class: "text-secondary",
+    },
+    {
+      title: "TVOC",
+      value: tvoc,
+      metric: "µg / m3",
+      figure: <span className="text-4xl">🌫️</span>,
+      class: "text-black",
     },
   ];
   const router = useRouter();
