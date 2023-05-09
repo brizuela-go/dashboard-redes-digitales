@@ -138,6 +138,7 @@ const Dashboard: NextPage<Props> = () => {
       class: "text-black",
     },
   ];
+
   const router = useRouter();
 
   useEffect(() => {
@@ -163,7 +164,7 @@ const Dashboard: NextPage<Props> = () => {
       pauseAudio();
       router.events.off("routeChangeStart", pauseAudio);
     };
-  }, []);
+  }, [router.events]);
 
   const AuthUser = useAuthUser();
 
