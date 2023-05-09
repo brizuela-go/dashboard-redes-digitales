@@ -14,6 +14,7 @@ import { RiErrorWarningFill, RiSkullFill } from "react-icons/ri";
 import { AuthAction, useAuthUser, withAuthUser } from "next-firebase-auth";
 import { FaTemperatureHigh, FaTemperatureLow } from "react-icons/fa";
 import Head from "next/head";
+import Loader from "@/components/Loader";
 
 const refs = [
   "test/Calidad_aire",
@@ -205,6 +206,8 @@ const Dashboard: NextPage<Props> = () => {
 };
 
 export default withAuthUser<any>({
-  whenUnauthedBeforeInit: AuthAction.RETURN_NULL,
+  LoaderComponent: () => <Loader />,
+  whenUnauthedBeforeInit: AuthAction.SHOW_LOADER,
   whenUnauthedAfterInit: AuthAction.REDIRECT_TO_LOGIN,
+  whenAuthed: AuthAction.RENDER,
 })(Dashboard);

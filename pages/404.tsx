@@ -13,7 +13,7 @@ const gifs = [
   "/denied5.gif",
 ];
 
-const Loader = (props: Props) => {
+const fourOFour = (props: Props) => {
   const router = useRouter();
   const [count, setCount] = useState(5);
   const [randomGif, setRandomGif] = useState("");
@@ -65,4 +65,4 @@ const Loader = (props: Props) => {
   );
 };
 
-export default Loader;
+export default fourOFour;
