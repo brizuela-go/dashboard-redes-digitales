@@ -232,7 +232,7 @@ const Dashboard: NextPage<Props> = () => {
               src={audio.src}
               autoPlay={isPlaying}
               // center with width 1/4
-              className="lg:w-1/4 w-1/2 mx-auto z-0 my-1"
+              className="lg:w-1/4 lg:block hidden w-1/2 mx-auto z-0 my-1"
               controls
             />
             {/* vercel not deploying? */}
