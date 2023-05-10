@@ -38,6 +38,10 @@ const Dashboard: NextPage<Props> = () => {
   const [co2, setCo2] = useState(0);
   const [tvoc, setTvoc] = useState(0);
 
+  const audio = new Audio("/rosa_pastel.mp3");
+
+  const [isPlaying, setIsPlaying] = useState(false);
+
   useEffect(() => {
     // Fetch data for each reference and update the corresponding state variable
     refsFirstTest.forEach((valref) => {
@@ -142,29 +146,12 @@ const Dashboard: NextPage<Props> = () => {
   const router = useRouter();
 
   useEffect(() => {
-    const audio = new Audio("/rosa_pastel.mp3");
-
-    // Load and play audio when page is visited or reloaded
-    const playAudio = () => {
-      audio.load();
-      audio.loop = true;
-      audio.play();
-    };
-
-    playAudio();
-
-    // Pause audio when leaving the page
-    const pauseAudio = () => {
-      audio.pause();
-    };
-
-    router.events.on("routeChangeStart", pauseAudio);
+    setIsPlaying(true);
 
     return () => {
-      pauseAudio();
-      router.events.off("routeChangeStart", pauseAudio);
+      setIsPlaying(false);
     };
-  }, [router.events]);
+  }, []);
 
   const AuthUser = useAuthUser();
 
@@ -241,6 +228,13 @@ const Dashboard: NextPage<Props> = () => {
               ¡Bienvenidx,{" "}
               {AuthUser.displayName ? AuthUser.displayName : AuthUser.email}! 🦄
             </h3>
+            <audio
+              src={audio.src}
+              autoPlay={isPlaying}
+              // center with width 1/4
+              className="lg:w-1/4 w-1/2 mx-auto z-0 my-1"
+              controls
+            />
 
             {/* {data.map((dataValue) => (
 
