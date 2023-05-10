@@ -10,6 +10,7 @@ h3 {
 html,
 body {
   @apply bg-pink-100 !important;
+  overflow-x: hidden;
 }
 
 @tailwind base;
@@ -24,6 +25,31 @@ body {
   left: 0;
   position: absolute;
   z-index: 0;
+}
+
+/* scrollbar */
+::-webkit-scrollbar {
+  width: 0.5rem;
+
+  @apply bg-pink-100 shadow-xl;
+
+  border-radius: 0.5rem;
+
+  @apply transition-colors duration-300;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-pink-300 shadow-2xl;
+
+  border-radius: 0.5rem;
+
+  @apply transition-colors duration-300;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-pink-300 shadow-2xl;
+
+  @apply transition-colors duration-300;
 }
 
 /* change cursor "https://i.ibb.co/y0Q8gDk/5.png" */

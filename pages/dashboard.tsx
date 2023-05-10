@@ -25,7 +25,12 @@ import Loader from "@/components/Loader";
 import { useRouter } from "next/router";
 
 const refsFirstTest = ["test/Humedad", "test/Indice_calor", "test/Temperatura"];
-const refsSecondTest = ["test2/Calidad_aire", "test2/co2", "test2/tvoc"];
+const refsSecondTest = [
+  "test2/Calidad_aire",
+  "test2/co2",
+  "test2/tvoc",
+  "test2/PH",
+];
 
 const Dashboard: NextPage<Props> = () => {
   const [loaded, setLoaded] = useState(false);
@@ -37,6 +42,7 @@ const Dashboard: NextPage<Props> = () => {
   const [calidadAire, setCalidadAire] = useState(0);
   const [co2, setCo2] = useState(0);
   const [tvoc, setTvoc] = useState(0);
+  const [ph, setPh] = useState(0);
 
   const audio = new Audio("/rosa_pastel.mp3");
 
@@ -70,6 +76,8 @@ const Dashboard: NextPage<Props> = () => {
           setCo2(data);
         } else if (valref === "test2/tvoc") {
           setTvoc(data);
+        } else if (valref === "test2/PH") {
+          setPh(data);
         }
 
         setLoaded(true);
@@ -141,6 +149,17 @@ const Dashboard: NextPage<Props> = () => {
       figure: <span className="text-4xl">🌫️</span>,
       class: "text-black",
     },
+    {
+      title: "PH",
+      value: ph,
+      metric: "PH",
+      figure: (
+        <span className="text-4xl">
+          {ph < 7 ? "🍋" : ph > 7 ? "🥛" : "🍋🥛"}
+        </span>
+      ),
+      class: "text-primary",
+    },
   ];
 
   const router = useRouter();
@@ -168,7 +187,7 @@ const Dashboard: NextPage<Props> = () => {
       {loaded ? (
         <>
           <header>
-            <div className="navbar bg-transparent ">
+            <div className="navbar bg-transparent  ">
               <div className="flex-1">
                 <p className="btn btn-ghost normal-case text-xl font-semibold bg-clip-text text-transparent from-pink-500  to-pink-600 bg-gradient-to-r">
                   Redes Digitales de Datos 💅
@@ -208,7 +227,7 @@ const Dashboard: NextPage<Props> = () => {
             </div>
           </header>
           <section
-            className={`flex  flex-col  justify-center   lg:p-24 p-14   ${inter.className}   `}
+            className={`flex  flex-col  justify-center   lg:p-24 p-14   ${inter.className}    `}
           >
             <div className=" flex lg:flex-row lg:justify-center items-center flex-col mb-8 lg:-mt-20">
               <h1 className="lg:text-8xl text-6xl font-bold text-center  tracking-tighter  bg-clip-text text-transparent from-pink-400 to-rose-500 bg-gradient-to-r  ">
