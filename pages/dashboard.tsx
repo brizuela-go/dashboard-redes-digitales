@@ -235,10 +235,7 @@ const Dashboard: NextPage<Props> = () => {
               className="lg:w-1/4 w-1/2 mx-auto z-0 my-1"
               controls
             />
-
-            {/* {data.map((dataValue) => (
-
-          ))} */}
+            {/* vercel not deploying? */}
             <div className="grid grid-cols-1 lg:grid-cols-3 lg:gap-y-6 gap-y-4 lg:gap-x-10 mt-10 ">
               {data.map((dataValue, index) => (
                 <div
